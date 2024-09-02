@@ -286,7 +286,7 @@ To decrypt the message, each block is multiplied by the inverse of the matrix us
 The cipher can, be adapted to an alphabet with any number of letters. All arithmetic just needs to be done modulo the number of letters instead of modulo 26.
 
 
-## PROGRAM:
+### PROGRAM:
 ```
 #include <stdio.h>
 #include <string.h>
@@ -382,10 +382,10 @@ int main() {
     return 0;
 }
 ```
-## OUTPUT:
+### OUTPUT:
 ![WhatsApp Image 2024-08-30 at 14 31 22_ca8fc1f4](https://github.com/user-attachments/assets/6071db1a-f1a4-448e-beb1-7219dd824ecd)
 
-## RESULT:
+### RESULT:
 The program is executed successfully
 
 -------------------------------------------------
@@ -393,7 +393,7 @@ The program is executed successfully
 ## Vigenere Cipher
 Vigenere Cipher using with different key values
 
-## AIM:
+### AIM:
 To develop a simple C program to implement Vigenere Cipher.
 
 ## DESIGN STEPS:
@@ -406,10 +406,10 @@ Implementation using C or pyhton code
 ### Step 3:
 Testing algorithm with different key values. 
 
-## ALGORITHM DESCRIPTION:
+### ALGORITHM DESCRIPTION:
 The Vigenere cipher is a method of encrypting alphabetic text by using a series of different Caesar ciphers based on the letters of a keyword. It is a simple form of polyalphabetic substitution.To encrypt, a table of alphabets can be used, termed a Vigenere square, or Vigenere table. It consists of the alphabet written out 26 times in different rows, each alphabet shifted cyclically to the left compared to the previous alphabet, corresponding to the 26 possible Caesar ciphers. At different points in the encryption process, the cipher uses a different alphabet from one of the rows used. The alphabet at each point depends on a repeating keyword.
 
-## PROGRAM:
+### PROGRAM:
 ```
 #include <stdio.h>
 #include <string.h>
@@ -463,11 +463,11 @@ int main() {
     return 0;
 }
 ```
-## OUTPUT:
+### OUTPUT:
 ![WhatsApp Image 2024-08-30 at 14 35 16_00b363ad](https://github.com/user-attachments/assets/e0964992-690e-4ff8-99ab-8b54b4e5fc84)
 
 
-## RESULT:
+### RESULT:
 The program is executed successfully
 
 -----------------------------------------------------------------------
@@ -475,78 +475,84 @@ The program is executed successfully
 # Rail Fence Cipher
 Rail Fence Cipher using with different key values
 
-# AIM:
-
+### AIM:
 To develop a simple C program to implement Rail Fence Cipher.
 
-## DESIGN STEPS:
-
+### DESIGN STEPS:
 ### Step 1:
-
 Design of Rail Fence Cipher algorithnm 
 
 ### Step 2:
-
 Implementation using C or pyhton code
 
 ### Step 3:
-
 Testing algorithm with different key values. 
-ALGORITHM DESCRIPTION:
+### ALGORITHM DESCRIPTION:
 In the rail fence cipher, the plaintext is written downwards and diagonally on successive "rails" of an imaginary fence, then moving up when we reach the bottom rail. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.
 
-## PROGRAM:
+### PROGRAM:
+```
+#include<stdio.h> 
+#include<string.h> 
+#include<stdlib.h> 
+int main()
+{
+    int i,j,len,rails,count,code[100][1000]; 
+    char str[1000];
+    printf("Enter a Secret Message\n"); 
+    scanf("%s",str);
+    len=strlen(str);
+    printf("Enter number of rails\n"); 
+    scanf("%d",&rails); 
+    for(i=0;i<rails;i++)
+    {
+        for(j=0;j<len;j++)
+        {
+            code[i][j]=0;
+        }
+    }
+    count=0; 
+    j=0;
+    while(j<len)
+    {
+        if(count%2==0)
+        {
+            for(i=0;i<rails;i++)
+            {
+                if (j < len) 
+                {
+                    code[i][j]=(int)str[j]; 
+                    j++;
+                }
+            }
 
-PROGRAM:
-#include<stdio.h> #include<string.h> #include<stdlib.h> main()
-{
-int i,j,len,rails,count,code[100][1000]; char str[1000];
-printf("Enter a Secret Message\n"); gets(str);
-len=strlen(str);
-printf("Enter number of rails\n"); scanf("%d",&rails); for(i=0;i<rails;i++)
-{
-for(j=0;j<len;j++)
-{
-code[i][j]=0;
-}
-}
-count=0; j=0;
-while(j<len)
-{
-if(count%2==0)
-{
-for(i=0;i<rails;i++)
-{
-//strcpy(code[i][j],str[j]);
-code[i][j]=(int)str[j]; j++;
-}
-
-}
-else
-{
- 
-for(i=rails-2;i>0;i--)
-{
-code[i][j]=(int)str[j]; j++;
-}
-}
-
-count++;
-}
-
-for(i=0;i<rails;i++)
-{
-for(j=0;j<len;j++)
-{
-if(code[i][j]!=0) printf("%c",code[i][j]);
-}
-}
+        }
+        else
+        {
+            for(i=rails-2;i>0;i--)
+            {
+                if (j < len) 
+                {
+                    code[i][j]=(int)str[j]; 
+                    j++;
+                }
+            }
+        }
+        count++;
+    }
+    for(i=0;i<rails;i++)
+    {
+        for(j=0;j<len;j++)
+        {
+            if(code[i][j]!=0) 
+                printf("%c",code[i][j]);
+        }
+    }
 printf("\n");
 }
-## OUTPUT:
-OUTPUT:
-Enter a Secret Message wearediscovered
-Enter number of rails 2
-waeicvrderdsoee
-## RESULT:
+```
+### OUTPUT:
+![image](https://github.com/user-attachments/assets/54001641-9878-44d2-99fc-3c1f645978eb)
+
+### RESULT:
 The program is executed successfully
