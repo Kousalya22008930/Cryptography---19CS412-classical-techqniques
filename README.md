@@ -23,40 +23,88 @@ Implementation using C or pyhton code
 
 ## PROGRAM:
 ```
-#include <stdio.h> 
-#include <stdlib.h>
-
-void caesarEncrypt(char *text, int key) 
-{ 
-    for (int i = 0; text[i] != '\0'; i++) 
-    { 
-        char c = text[i]; 
-        if (c >= 'A' && c <= 'Z') { text[i] = ((c - 'A' + key) % 26 + 26) % 26 + 'A'; }
-        if (c >= 'a' && c <= 'z') { text[i] = ((c - 'a' + key) % 26 + 26) % 26 + 'a'; }  
-    } 
+#include <stdio.h>
+#include <ctype.h>
+int main()
+{
+char text[500], ch;
+int key;
+printf("Enter a message to encrypt: ");
+scanf("%s", text);
+printf("Enter the key: ");
+scanf("%d", &key);
+for (int i = 0; text[i] != '\0'; ++i) {
+ch = text[i];
+if (isalnum(ch))
+{
+if (islower(ch))
+{
+ch = (ch - 'a' + key) % 26 + 'a';
 }
-void caesarDecrypt(char *text, int key) 
-{ 
-caesarEncrypt(text, -key); 
+else if (isupper(ch))
+{
+ch = (ch - 'A' + key) % 26 + 'A';
 }
-
-int main() 
-{ 
-    char message[100];  
-    int key;
-    printf("Enter the message to encrypt: "); 
-    fgets(message, sizeof(message), stdin);
-    printf("Enter the Caesar Cipher key (an integer): "); 
-    scanf("%d", &key);
-    caesarEncrypt(message, key); 
-    printf("Encrypted Message: %s", message);
-    caesarDecrypt(message, key); 
-    printf("Decrypted Message: %s", message); 
-    return 0; 
+else if (isdigit(ch))
+{
+ch = (ch - '0' + key) % 10 + '0';
+}
+text[i] = ch;
+}
+else {
+printf("Invalid character '%c' found. Only alphanumeric characters are allowed.\n", ch);
+return 1;
+}
+}
+printf("Encrypted message: %s\n", text);
+return 0;
 }
 ```
 ## OUTPUT:
-![WhatsApp Image 2024-08-30 at 14 37 23_5a0b2459](https://github.com/user-attachments/assets/1d14d0ff-eaee-4095-a607-9ff328586b0b)
+![{E36CB441-8BE6-47E1-82D4-CAD1B026A865}](https://github.com/user-attachments/assets/513597bd-f75b-4855-9caa-faabcbf5458e)
+## PROGRAM:
+    ```
+    #include <stdio.h>
+#include <ctype.h>
+int main()
+{
+char text[500], ch;
+int key;
+printf("Enter a message to decrypt: ");
+scanf("%s", text);
+printf("Enter the key: ");
+scanf("%d", &key);
+for (int i = 0; text[i] != '\0'; ++i)
+{
+ch = text[i];
+if (isalnum(ch))
+{
+if (islower(ch))
+{
+ch = (ch - 'a' - key + 26) % 26 + 'a';
+}
+else if (isupper(ch))
+{
+ch = (ch - 'A' - key + 26) % 26 + 'A';
+}
+else if (isdigit(ch))
+{
+ch = (ch - '0' - key + 10) % 10 + '0';
+}
+text[i] = ch;
+}
+else
+{
+printf("Invalid character '%c' found. Only alphanumeric characters are allowed.\n", ch);
+return 1;
+}
+}
+printf("Decrypted message: %s\n", text);
+return 0;
+}
+    ```
+## OUTPUT:
+![{4261D8F3-DC8F-48A8-8C83-5AEF13564D32}](https://github.com/user-attachments/assets/5a801db6-265a-4271-8bc0-1ea64a3a0f72)
 
 
 ## RESULT:
