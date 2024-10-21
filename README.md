@@ -63,8 +63,8 @@ return 0;
 ## OUTPUT:
 ![{E36CB441-8BE6-47E1-82D4-CAD1B026A865}](https://github.com/user-attachments/assets/513597bd-f75b-4855-9caa-faabcbf5458e)
 ## PROGRAM:
-    ```
-    #include <stdio.h>
+```
+#include <stdio.h>
 #include <ctype.h>
 int main()
 {
@@ -102,7 +102,7 @@ return 1;
 printf("Decrypted message: %s\n", text);
 return 0;
 }
-    ```
+```
 ## OUTPUT:
 ![{4261D8F3-DC8F-48A8-8C83-5AEF13564D32}](https://github.com/user-attachments/assets/5a801db6-265a-4271-8bc0-1ea64a3a0f72)
 
